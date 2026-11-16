@@ -1,0 +1,115 @@
+module.exports = [
+  {
+    title: "Python Basics",
+    level: "beginner",
+    category: "Python and Data",
+    instructor: 1,
+    status: "published",
+    description: "Start programming with Python. Learn printing, lists, loops and functions with simple examples.",
+    lessons: [
+      ["Your first Python program", "<p>Python is known for readable code. The print function shows text on the screen, so print('Hello') is a complete program.</p><p>Indentation, not curly braces, groups the lines of code together.</p>", 8],
+      ["Lists and loops", "<p>A list holds many values in order. A for loop goes through them one by one so you can work with each item.</p>", 10],
+      ["Functions in Python", "<p>Use the def keyword to define a function. It can take inputs, called parameters, and send back a result with return.</p>", 10],
+    ],
+    quiz: {
+      title: "Python Basics Quiz",
+      pass: 60,
+      questions: [
+        ["Which function shows text on the screen?", "echo()", "print()", "show()", "write()", "b", "print() displays text."],
+        ["What does Python use to group lines of code?", "Curly braces", "Indentation", "Semicolons", "Brackets only", "b", "Indentation groups code in Python."],
+        ["Which keyword defines a function?", "func", "define", "def", "function", "c", "def starts a function definition."],
+        ["Which structure holds many values in order?", "A list", "A tag", "A style", "A route", "a", "A list keeps values in order."],
+      ],
+    },
+  },
+  {
+    title: "SQL and Databases",
+    level: "intermediate",
+    category: "Python and Data",
+    instructor: 2,
+    status: "published",
+    description: "Learn how databases store data and how to read it with SELECT, WHERE and JOIN.",
+    lessons: [
+      ["Tables, rows and columns", "<p>A relational database stores data in tables. Each row is one record and each column is one kind of information, like name or email.</p>", 8],
+      ["Reading data with SELECT", "<p>SELECT chooses columns from a table, and WHERE filters the rows. For example, SELECT name FROM users WHERE role = 'admin' returns only admin names.</p>", 10],
+      ["Joining tables", "<p>A JOIN combines rows from two tables using a shared key, such as user_id. This lets you show a booking together with the name of the person who made it.</p>", 12],
+    ],
+    quiz: {
+      title: "SQL Quiz",
+      pass: 60,
+      questions: [
+        ["What does each row in a table represent?", "One column", "One record", "One database", "One index", "b", "A row is one record."],
+        ["Which clause filters rows?", "WHERE", "ORDER", "GROUP", "LIMIT", "a", "WHERE filters rows."],
+        ["Which keyword combines two tables?", "MERGE", "JOIN", "LINK", "STACK", "b", "JOIN combines rows using a shared key."],
+        ["Which statement reads data?", "INSERT", "DELETE", "SELECT", "CREATE", "c", "SELECT reads data."],
+      ],
+    },
+  },
+  {
+    title: "UI/UX Design Basics",
+    level: "beginner",
+    category: "Design",
+    instructor: 2,
+    status: "published",
+    description: "Learn how to make websites that are clear, readable and pleasant to use on any screen.",
+    lessons: [
+      ["What is good UX?", "<p>User experience is how easy and pleasant a product is to use. Good UX removes confusion, so people reach their goal in as few steps as possible.</p>", 8],
+      ["Colour and contrast", "<p>Text must stand out from its background so everyone can read it. A contrast ratio of at least 4.5 to 1 is the common rule for normal text.</p>", 10],
+      ["Designing for mobile", "<p>Most visitors use a phone. Start with the small screen, keep tap targets large and let the layout grow for bigger screens.</p>", 10],
+    ],
+    quiz: {
+      title: "UI/UX Quiz",
+      pass: 60,
+      questions: [
+        ["What is the main goal of good UX?", "More colours", "Helping people reach their goal easily", "Longer pages", "Fewer links to home", "b", "Good UX helps people reach their goal easily."],
+        ["What is the common minimum contrast ratio for normal text?", "1.5 to 1", "2 to 1", "4.5 to 1", "20 to 1", "c", "4.5 to 1 is the usual minimum."],
+        ["What does mobile first design mean?", "Design for the small screen first", "Design only for phones", "Skip desktop", "Use only images", "a", "You start small and grow the layout."],
+        ["Why should buttons be large on mobile?", "They are easier to tap", "They load faster", "They use less code", "They need no label", "a", "Large targets are easier to tap."],
+      ],
+    },
+  },
+  {
+    title: "Git and GitHub",
+    level: "beginner",
+    category: "Career Skills",
+    instructor: 0,
+    status: "published",
+    description: "Track your work with Git and share it on GitHub, a must-have skill for every developer.",
+    lessons: [
+      ["What is Git?", "<p>Git is a version control tool. It saves snapshots of your project called commits, so you can see history and go back if something breaks.</p>", 8],
+      ["Commit, push and pull", "<p>git add stages your changes, git commit saves them and git push sends them to GitHub. git pull brings the latest changes down to your computer.</p>", 10],
+      ["Branches and pull requests", "<p>A branch is a safe copy where you try new work. When it is ready you open a pull request so others can review it before it joins main.</p>", 12],
+    ],
+    quiz: {
+      title: "Git Quiz",
+      pass: 60,
+      questions: [
+        ["What is a commit?", "A saved snapshot of your project", "A new website", "A bug", "A folder", "a", "A commit is a saved snapshot."],
+        ["Which command sends your commits to GitHub?", "git pull", "git push", "git clone", "git init", "b", "git push uploads commits."],
+        ["What is a branch used for?", "Trying new work safely", "Deleting history", "Hosting a site", "Compressing files", "a", "Branches keep new work separate."],
+        ["Which command downloads the latest changes?", "git pull", "git add", "git branch", "git status", "a", "git pull downloads the latest changes."],
+      ],
+    },
+  },
+  {
+    title: "Intro to Node.js",
+    level: "intermediate",
+    category: "Web Development",
+    instructor: 1,
+    status: "pending",
+    description: "Run JavaScript on a server and build your first API with Express.",
+    lessons: [
+      ["What is Node.js?", "<p>Node.js lets you run JavaScript outside the browser, on a server. It is popular for building APIs and tools.</p>", 8],
+      ["Building a simple API with Express", "<p>Express is a small framework for Node.js. You define routes, such as GET /api/courses, and send back JSON.</p>", 12],
+    ],
+    quiz: {
+      title: "Node.js Quiz",
+      pass: 60,
+      questions: [
+        ["Where does Node.js run JavaScript?", "On a server or computer, outside the browser", "Only inside Chrome", "Only on phones", "Only in databases", "a", "Node.js runs JavaScript outside the browser."],
+        ["What does Express help you build?", "Web servers and APIs", "Spreadsheets", "Logos", "Videos", "a", "Express builds web servers and APIs."],
+        ["What format do APIs commonly send back?", "JSON", "PDF only", "MP3", "BMP", "a", "JSON is the common API format."],
+      ],
+    },
+  },
+];
