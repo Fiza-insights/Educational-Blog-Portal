@@ -1,5 +1,6 @@
-import { useEffect, useState } from "react";
+﻿import { useEffect, useState } from "react";
 import { api } from "../api.js";
+import { SkeletonGrid } from "../components/Skeleton.jsx";
 import CourseCard from "../components/CourseCard.jsx";
 
 export default function Courses() {
@@ -39,9 +40,10 @@ export default function Courses() {
         </select>
       </div>
       {error && <p className="error">{error}</p>}
-      {loading && <p className="muted">Loading...</p>}
+      {loading && <SkeletonGrid />}
       {!loading && !error && shown.length === 0 && <p className="muted">No courses match your search.</p>}
       <div className="grid">{shown.map((c) => <CourseCard key={c.id} c={c} />)}</div>
     </div>
   );
 }
+
