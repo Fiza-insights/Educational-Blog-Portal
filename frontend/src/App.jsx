@@ -10,6 +10,10 @@ import Lesson from "./pages/Lesson.jsx";
 import Quiz from "./pages/Quiz.jsx";
 import Blog from "./pages/Blog.jsx";
 import Post from "./pages/Post.jsx";
+import Instructor from "./pages/Instructor.jsx";
+import InstructorCourse from "./pages/InstructorCourse.jsx";
+import Write from "./pages/Write.jsx";
+import Admin from "./pages/Admin.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 
@@ -41,9 +45,10 @@ export default function App() {
             <Route path="/blog/:slug" element={<Post />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
-            <Route path="/instructor" element={<Soon name="Instructor" />} />
-            <Route path="/write" element={<Soon name="Write" />} />
-            <Route path="/admin" element={<Soon name="Admin" />} />
+            <Route path="/instructor" element={<Instructor />} />
+            <Route path="/instructor/:id" element={<InstructorCourse />} />
+            <Route path="/write" element={<Write />} />
+            <Route path="/admin" element={<Admin />} />
             <Route path="*" element={<Soon name="Page not found" />} />
           </Routes>
         </div>
@@ -52,3 +57,6 @@ export default function App() {
     </>
   );
 }
+
+
+

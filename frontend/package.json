@@ -1,28 +1,29 @@
 {
-    "name":  "emberly-frontend",
-    "version":  "1.0.0",
-    "description":  "",
-    "main":  "index.js",
-    "scripts":  {
-                    "test":  "echo \"Error: no test specified\" \u0026\u0026 exit 1",
-                    "dev":  "vite",
-                    "build":  "vite build"
-                },
-    "keywords":  [
-
-                 ],
-    "author":  "",
-    "license":  "ISC",
-    "type":  "module",
-    "dependencies":  {
-                         "lucide-react":  "^1.70.0",
-                         "react":  "^19.3.1",
-                         "react-dom":  "^19.3.1",
-                         "react-router-dom":  "^7.18.5",
-                         "recharts":  "^3.10.1"
-                     },
-    "devDependencies":  {
-                            "@vitejs/plugin-react":  "^6.2.1",
-                            "vite":  "^8.3.6"
-                        }
+    "name": "emberly-frontend",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "dev": "vite",
+        "build": "vite build"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "type": "module",
+    "dependencies": {
+        "@tiptap/pm": "^3.34.0",
+        "@tiptap/react": "^3.34.0",
+        "@tiptap/starter-kit": "^3.34.0",
+        "lucide-react": "^1.70.0",
+        "react": "^19.3.1",
+        "react-dom": "^19.3.1",
+        "react-router-dom": "^7.18.5",
+        "recharts": "^3.10.1"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-react": "^6.2.1",
+        "vite": "^8.3.6"
+    }
 }
