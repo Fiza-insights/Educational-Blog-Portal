@@ -1,30 +1,34 @@
-﻿import { useState } from "react";
+﻿import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { Heart, Bookmark, Share2 } from "lucide-react";
-
-function read(key) {
-  try { return JSON.parse(localStorage.getItem(key) || "[]"); } catch (e) { return []; }
-}
-function write(key, v) {
-  try { localStorage.setItem(key, JSON.stringify(v)); } catch (e) {}
-}
+import { api } from "../api.js";
+import { useAuth } from "../auth.jsx";
 
 export default function PostActions({ id }) {
-  const [liked, setLiked] = useState(read("emberly_likes").includes(id));
-  const [saved, setSaved] = useState(read("emberly_marks").includes(id));
+  const { user } = useAuth();
+  const nav = useNavigate();
+  const [s, setS] = useState({ likes: 0, liked: false, saved: false });
   const [pop, setPop] = useState("");
   const [note, setNote] = useState("");
+
+  useEffect(() => {
+    api("/engage/posts/" + id).then(setS).catch(() => {});
+  }, [id, user]);
 
   function burst(name) {
     setPop(name);
     setTimeout(() => setPop(""), 500);
   }
 
-  function toggle(key, on, setOn, name) {
-    const list = read(key).filter((x) => x !== id);
-    if (!on) list.push(id);
-    write(key, list);
-    setOn(!on);
-    burst(name);
+  async function toggle(kind) {
+    if (!user) return nav("/login");
+    try {
+      const r = await api("/engage/posts/" + id + "/" + kind, { method: "POST" });
+      setS(r);
+      burst(kind);
+    } catch (e) {
+      setNote(e.message);
+    }
   }
 
   async function share() {
@@ -38,11 +42,11 @@ export default function PostActions({ id }) {
 
   return (
     <div className="actions">
-      <button className={"act" + (liked ? " on like" : "") + (pop === "like" ? " pop" : "")} onClick={() => toggle("emberly_likes", liked, setLiked, "like")}>
-        <Heart size={18} fill={liked ? "currentColor" : "none"} /> {liked ? "Liked" : "Like"}
+      <button className={"act" + (s.liked ? " on like" : "") + (pop === "like" ? " pop" : "")} onClick={() => toggle("like")}>
+        <Heart size={18} fill={s.liked ? "currentColor" : "none"} /> {s.likes} {s.likes === 1 ? "Like" : "Likes"}
       </button>
-      <button className={"act" + (saved ? " on" : "") + (pop === "save" ? " pop" : "")} onClick={() => toggle("emberly_marks", saved, setSaved, "save")}>
-        <Bookmark size={18} fill={saved ? "currentColor" : "none"} /> {saved ? "Saved" : "Save"}
+      <button className={"act" + (s.saved ? " on" : "") + (pop === "save" ? " pop" : "")} onClick={() => toggle("save")}>
+        <Bookmark size={18} fill={s.saved ? "currentColor" : "none"} /> {s.saved ? "Saved" : "Save"}
       </button>
       <button className={"act" + (pop === "share" ? " pop" : "")} onClick={share}>
         <Share2 size={18} /> Share

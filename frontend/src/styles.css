@@ -298,3 +298,11 @@ textarea { resize: vertical; }
 .qtext { flex: 1; min-width: 200px; display: grid; }
 .qrow .btn { padding: 8px 16px; font-size: 0.85rem; }
 @media (max-width: 960px) { .cards4 { grid-template-columns: repeat(2, 1fr); } .charts { grid-template-columns: 1fr; } }
+.quizedit { margin-top: 40px; max-width: 820px; }
+.quizedit .card { margin-top: 14px; }
+.quizedit .two { display: grid; grid-template-columns: 2fr 1fr; gap: 14px; }
+.qedit input { margin-top: 8px; }
+.optrow { display: flex; align-items: center; gap: 10px; margin: 6px 0; font-weight: 400; }
+.optrow input[type="radio"] { width: auto; margin: 0; flex: none; }
+.cards4.three { grid-template-columns: repeat(3, 1fr); margin-top: 22px; }
+@media (max-width: 640px) { .cards4.three { grid-template-columns: 1fr; } }

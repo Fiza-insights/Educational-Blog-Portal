@@ -19,7 +19,9 @@ app.use("/api/posts", require("./routes/posts.js"));
 app.use("/api", require("./routes/meta.js"));
 
 const PORT = process.env.PORT || 5002;
+app.use("/api/engage", require("./routes/engage"));
 app.listen(PORT, function (err) {
   if (err) { console.error("Cannot start server:", err.message); return; }
   console.log("Emberly API running on http://localhost:" + PORT);
 });
+

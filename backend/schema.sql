@@ -118,3 +118,17 @@ CREATE INDEX IF NOT EXISTS idx_lessons_course ON lessons (course_id, position);
 CREATE INDEX IF NOT EXISTS idx_courses_status ON courses (status);
 CREATE INDEX IF NOT EXISTS idx_posts_status ON posts (status, published_at);
 CREATE INDEX IF NOT EXISTS idx_comments_post ON comments (post_id);
+
+CREATE TABLE IF NOT EXISTS post_likes (
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, post_id)
+);
+
+CREATE TABLE IF NOT EXISTS post_bookmarks (
+  user_id INTEGER NOT NULL REFERENCES users(id) ON DELETE CASCADE,
+  post_id INTEGER NOT NULL REFERENCES posts(id) ON DELETE CASCADE,
+  created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (user_id, post_id)
+);

@@ -3,6 +3,7 @@ import { Link, Navigate, useNavigate, useParams } from "react-router-dom";
 import { Trash2, Pencil, Send } from "lucide-react";
 import { api } from "../api.js";
 import { useAuth } from "../auth.jsx";
+import QuizEditor from "../components/QuizEditor.jsx";
 
 const blank = { title: "", content: "", video_url: "", duration_min: 5 };
 
@@ -12,6 +13,7 @@ export default function InstructorCourse() {
   const nav = useNavigate();
   const [course, setCourse] = useState(null);
   const [lessons, setLessons] = useState([]);
+  const [quiz, setQuiz] = useState(null);
   const [form, setForm] = useState(blank);
   const [editing, setEditing] = useState(null);
   const [error, setError] = useState("");
@@ -21,6 +23,7 @@ export default function InstructorCourse() {
     api("/instructor/courses/" + id).then((d) => {
       setCourse(d.course || d);
       setLessons(d.lessons || (d.course && d.course.lessons) || []);
+      setQuiz(d.quiz || (d.course && d.course.quiz) || null);
     }).catch((e) => setError(e.message));
   }
   useEffect(load, [id]);
@@ -110,6 +113,8 @@ export default function InstructorCourse() {
           </div>
         </form>
       </div>
+      <QuizEditor courseId={id} initial={quiz} onSaved={load} />
     </div>
   );
 }
+
