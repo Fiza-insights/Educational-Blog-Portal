@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+﻿import { Link, NavLink, useNavigate } from "react-router-dom";
 import { GraduationCap, LogOut, Menu, X } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../auth.jsx";
@@ -20,7 +20,7 @@ export default function Navbar() {
     <header className="nav">
       <div className="container nav-in">
         <Link to="/" className="logo" onClick={close}>
-          <GraduationCap size={26} /> Emberly
+          <span className="logomark"><GraduationCap size={20} /></span> Emberly
         </Link>
         <button className="burger" onClick={() => setOpen(!open)} aria-label="Menu">
           {open ? <X /> : <Menu />}
@@ -38,8 +38,8 @@ export default function Navbar() {
             <button className="btn ghost" onClick={out}><LogOut size={16} /> {user.name.split(" ")[0]}</button>
           ) : (
             <>
-              <Link to="/login" className="btn ghost" onClick={close}>Log in</Link>
-              <Link to="/register" className="btn" onClick={close}>Join free</Link>
+              <NavLink to="/login" className={({ isActive }) => "btn ghost" + (isActive ? " here" : "")} onClick={close}>Log in</NavLink>
+              <NavLink to="/register" className={({ isActive }) => "btn" + (isActive ? " here" : "")} onClick={close}>Join free</NavLink>
             </>
           )}
         </nav>
@@ -47,3 +47,6 @@ export default function Navbar() {
     </header>
   );
 }
+
+
+

@@ -7,8 +7,32 @@ import { useAuth } from "../auth.jsx";
 const LABELS = {
   students: "Students", instructors: "Instructors", published_courses: "Live courses", pending_courses: "Courses waiting",
   enrollments: "Enrolments", published_posts: "Live articles", pending_posts: "Articles waiting", comments: "Comments",
-  quiz_attempts: "Quiz attempts", pass_rate: "Pass rate %",
+  quiz_attempts: "Quiz attempts", pass_rate: "Pass rate",
 };
+
+const SINGLE = {
+  students: "Student", instructors: "Instructor", published_courses: "Live course", pending_courses: "Course waiting",
+  enrollments: "Enrolment", published_posts: "Live article", pending_posts: "Article waiting", comments: "Comment",
+  quiz_attempts: "Quiz attempt",
+};
+const lab = (k, n) => (n === 1 && SINGLE[k] ? SINGLE[k] : LABELS[k] || k);
+
+function BarRows({ data, labelKey, valueKey, unit, color }) {
+  const max = Math.max(1, ...data.map((d) => d[valueKey]));
+  return (
+    <div className="barrows">
+      {data.map((d, i) => (
+        <div key={d[labelKey]} className="brow">
+          <span className="blabel" title={d[labelKey]}>{d[labelKey]}</span>
+          <div className="btrack">
+            <div className="bfill" style={{ width: (d[valueKey] / max) * 100 + "%", background: color, animationDelay: i * 70 + "ms" }} />
+          </div>
+          <span className="bval">{d[valueKey]} {d[valueKey] === 1 ? unit : unit + "s"}</span>
+        </div>
+      ))}
+    </div>
+  );
+}
 
 function Overview() {
   const [r, setR] = useState(null);
@@ -20,43 +44,27 @@ function Overview() {
     <div>
       <div className="cards4">
         {Object.keys(r.cards).map((k) => (
-          <div key={k} className="card stat"><strong>{r.cards[k]}</strong><span>{LABELS[k] || k}</span></div>
+          <div key={k} className="card stat"><strong>{k === "pass_rate" ? r.cards[k] + "%" : r.cards[k]}</strong><span>{lab(k, r.cards[k])}</span></div>
         ))}
       </div>
       <div className="charts">
         <div className="card chartbox">
           <h3>Students per course</h3>
-          <ResponsiveContainer width="100%" height={240}>
-            <BarChart data={r.enrollments_by_course}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(91,60,160,0.15)" />
-              <XAxis dataKey="title" tick={{ fontSize: 11 }} interval={0} angle={-15} height={60} />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
-              <Bar dataKey="students" fill="#7c5cdb" radius={[8, 8, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          <BarRows data={r.enrollments_by_course} labelKey="title" valueKey="students" unit="student" color="linear-gradient(90deg, #6a48cf, #a78bfa)" />
         </div>
         <div className="card chartbox">
           <h3>Articles per category</h3>
-          <ResponsiveContainer width="100%" height={240}>
-            <BarChart data={r.posts_by_category}>
-              <CartesianGrid strokeDasharray="3 3" stroke="rgba(91,60,160,0.15)" />
-              <XAxis dataKey="name" tick={{ fontSize: 11 }} interval={0} angle={-15} height={60} />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
-              <Bar dataKey="posts" fill="#f4a97f" radius={[8, 8, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+          <BarRows data={r.posts_by_category} labelKey="name" valueKey="posts" unit="article" color="linear-gradient(90deg, #f4a97f, #FED7B8)" />
         </div>
         <div className="card chartbox wide">
           <h3>Enrolments, last days</h3>
           <ResponsiveContainer width="100%" height={240}>
-            <LineChart data={r.daily}>
+            <LineChart data={r.daily} margin={{ right: 20, left: 0 }}>
               <CartesianGrid strokeDasharray="3 3" stroke="rgba(91,60,160,0.15)" />
-              <XAxis dataKey="date" tick={{ fontSize: 11 }} />
-              <YAxis allowDecimals={false} />
-              <Tooltip />
-              <Line type="monotone" dataKey="enrollments" stroke="#6a48cf" strokeWidth={3} dot={{ r: 4 }} />
+              <XAxis dataKey="date" tickFormatter={(d) => d.slice(5)} tick={{ fontSize: 11 }} interval="preserveStartEnd" padding={{ left: 22, right: 14 }} tickMargin={10} />
+              <YAxis allowDecimals={false} tickMargin={8} width={34} domain={[0, (m) => Math.max(3, m + 1)]} />
+              <Tooltip separator=": " formatter={(v) => [v, "Enrolments"]} labelFormatter={(d) => d} />
+              <Line type="monotone" dataKey="enrollments" stroke="#6a48cf" strokeWidth={3} dot={{ r: 4 }} activeDot={{ r: 8, strokeWidth: 3, stroke: "#ffffff" }} />
             </LineChart>
           </ResponsiveContainer>
         </div>
@@ -142,6 +150,7 @@ export default function Admin() {
   return (
     <div className="container page rise">
       <h1>Admin panel</h1>
+      <p className="muted sub">Platform overview, content moderation and activity summary.</p>
       <div className="row tabs">
         {tabs.map(([k, l]) => <button key={k} className={"badge tagbtn" + (tab === k ? " on" : "")} onClick={() => setTab(k)}>{l}</button>)}
       </div>
@@ -155,3 +164,8 @@ export default function Admin() {
     </div>
   );
 }
+
+
+
+
+

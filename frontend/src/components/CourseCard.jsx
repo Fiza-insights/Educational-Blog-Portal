@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
+﻿import { Link } from "react-router-dom";
 import { BookOpen, Clock, Users } from "lucide-react";
 
 export default function CourseCard({ c }) {
+  const h = (c.category_name || "").split("").reduce((a, ch) => a + ch.charCodeAt(0), 0) % 5;
   return (
     <Link to={"/courses/" + c.id} className="card hover course-card">
-      <div className="thumb"><BookOpen size={34} /></div>
+      <div className={"thumb t" + h}><BookOpen size={34} /></div>
       <div className="row">
         <span className="badge">{c.category_name || "General"}</span>
         <span className="badge">{c.level}</span>
@@ -20,3 +21,4 @@ export default function CourseCard({ c }) {
     </Link>
   );
 }
+

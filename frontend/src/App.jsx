@@ -14,6 +14,7 @@ import Instructor from "./pages/Instructor.jsx";
 import InstructorCourse from "./pages/InstructorCourse.jsx";
 import Write from "./pages/Write.jsx";
 import Admin from "./pages/Admin.jsx";
+import NotFound from "./pages/NotFound.jsx";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 
@@ -49,7 +50,7 @@ export default function App() {
             <Route path="/instructor/:id" element={<InstructorCourse />} />
             <Route path="/write" element={<Write />} />
             <Route path="/admin" element={<Admin />} />
-            <Route path="*" element={<Soon name="Page not found" />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </div>
       </main>
@@ -57,6 +58,7 @@ export default function App() {
     </>
   );
 }
+
 
 
 

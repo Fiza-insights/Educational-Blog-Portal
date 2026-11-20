@@ -15,7 +15,7 @@ export default function QuizEditor({ courseId, initial, onSaved }) {
     if (initial) {
       setTitle(initial.title || "Final quiz");
       setPass(initial.pass_percent || 60);
-      if (initial.questions && initial.questions.length) setQs(initial.questions.map((q) => ({ ...blankQ(), ...q })));
+      if (initial.questions && initial.questions.length) setQs(initial.questions.map((q) => { const o = q.options || []; return { ...blankQ(), ...q, option_a: o[0] || q.option_a || "", option_b: o[1] || q.option_b || "", option_c: o[2] || q.option_c || "", option_d: o[3] || q.option_d || "", correct_answer: q.correct || q.correct_answer || "a" }; }));
     }
   }, [initial]);
 
@@ -27,7 +27,7 @@ export default function QuizEditor({ courseId, initial, onSaved }) {
     try {
       await api("/instructor/courses/" + courseId + "/quiz", {
         method: "PUT",
-        body: { title, pass_percent: Number(pass), questions: qs },
+        body: { title, pass_percent: Number(pass), questions: qs.map((q) => ({ text: q.text, options: [q.option_a, q.option_b, q.option_c, q.option_d], correct: q.correct_answer, explanation: q.explanation })) },
       });
       setMsg("Quiz saved.");
       if (onSaved) onSaved();
@@ -69,3 +69,5 @@ export default function QuizEditor({ courseId, initial, onSaved }) {
     </form>
   );
 }
+
+

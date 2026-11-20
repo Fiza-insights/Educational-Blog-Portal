@@ -1,6 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { BookOpen, PenLine, Trophy, UserPlus, Sparkles } from "lucide-react";
+import { BookOpen, PenLine, Trophy, UserPlus, Sparkles, GraduationCap, Clock } from "lucide-react";
 import { api } from "../api.js";
 import CourseCard from "../components/CourseCard.jsx";
 
@@ -11,7 +11,7 @@ export default function Home() {
 
   useEffect(() => {
     api("/courses").then((d) => setCourses(d.courses)).catch(() => {});
-    api("/posts?limit=3").then((d) => { setPosts(d.posts); setPostTotal(d.total); }).catch(() => {});
+    api("/posts?limit=20").then((d) => { const seen = new Set(); const pick = []; for (const p of d.posts) { if (!seen.has(p.category_name)) { seen.add(p.category_name); pick.push(p); } if (pick.length === 3) break; } setPosts(pick); setPostTotal(d.total); }).catch(() => {});
   }, []);
 
   const lessons = courses.reduce((n, c) => n + (c.lesson_count || 0), 0);
@@ -29,19 +29,19 @@ export default function Home() {
       <section className="hero">
         <div className="container hero-grid rise">
           <div>
-            <span className="badge"><Sparkles size={13} /> Learn. Read. Grow.</span>
-            <h1 className="hero-title">Learn a skill.<br />Read a story.<br /><em>Grow every day.</em></h1>
-            <p className="lead">Emberly brings practical courses and thoughtful articles together in one warm, simple place.</p>
+            <span className="badge"><Sparkles size={13} /> Practical Courses &amp; Stories</span>
+            <h1 className="hero-title"><span className="l1">Learn practical skills.</span><br /><em>Read ideas that stay.</em></h1>
+            <p className="lead">Short, focused courses and thoughtful stories designed to help you grow a little every day.</p>
             <div className="row">
               <Link to="/courses" className="btn">Browse courses</Link>
               <Link to="/blog" className="btn ghost">Read the blog</Link>
             </div>
           </div>
           <div className="orb-wrap" aria-hidden="true">
-            <div className="orb"><div className="orb-core" /></div>
-            <div className="chip c1">{courses.length} courses</div>
-            <div className="chip c2">{lessons} lessons</div>
-            <div className="chip c3">Quizzes</div>
+            <div className="orb"><div className="orbit"><span className="o1"><BookOpen size={18} /></span><span className="o2"><Trophy size={18} /></span><span className="o3"><PenLine size={18} /></span></div><div className="orb-core"><GraduationCap size={56} /></div></div>
+            <div className="chip c1">Bite-sized lessons</div>
+            <div className="chip c2">Guided articles</div>
+            <div className="chip c3">Interactive quizzes</div>
           </div>
         </div>
       </section>
@@ -80,7 +80,7 @@ export default function Home() {
               <span className="badge">{p.category_name}</span>
               <h3 style={{ marginTop: 12 }}>{p.title}</h3>
               <p className="muted clamp">{p.excerpt}</p>
-              <p className="muted small">{p.author_name} | {p.reading_min} min read</p>
+              <p className="muted small byline"><span>{p.author_name}</span><span className="rt"><Clock size={13} /> {p.reading_min} min read</span></p>
             </Link>
           ))}
         </div>
@@ -88,3 +88,7 @@ export default function Home() {
     </div>
   );
 }
+
+
+
+

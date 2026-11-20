@@ -39,11 +39,13 @@ export default function Courses() {
           <option>Advanced</option>
         </select>
       </div>
-      {error && <p className="error">{error}</p>}
+      <p className="muted small count">{shown.length} of {courses.length} courses{(q || cat || level) && <button className="linkbtn" onClick={() => { setQ(""); setCat(""); setLevel(""); }}>Clear filters</button>}</p>{error && <p className="error">{error}</p>}
       {loading && <SkeletonGrid />}
       {!loading && !error && shown.length === 0 && <p className="muted">No courses match your search.</p>}
-      <div className="grid">{shown.map((c) => <CourseCard key={c.id} c={c} />)}</div>
+      <div key={q + "|" + cat + "|" + level} className="grid">{shown.map((c) => <CourseCard key={c.id} c={c} />)}</div>
     </div>
   );
 }
+
+
 
