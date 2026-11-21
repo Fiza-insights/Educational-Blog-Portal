@@ -2,7 +2,7 @@
 import { Plus, Trash2, Trophy } from "lucide-react";
 import { api } from "../api.js";
 
-const blankQ = () => ({ text: "", option_a: "", option_b: "", option_c: "", option_d: "", correct_answer: "a", explanation: "" });
+const blankQ = () => ({ text: "", option_a: "", option_b: "", option_c: "", option_d: "", correct_answer: "", explanation: "" });
 
 export default function QuizEditor({ courseId, initial, onSaved }) {
   const [title, setTitle] = useState("Final quiz");
@@ -49,11 +49,11 @@ export default function QuizEditor({ courseId, initial, onSaved }) {
             <h3>Question {i + 1}</h3>
             {qs.length > 1 && <button type="button" className="iconbtn" onClick={() => setQs(qs.filter((_, j) => j !== i))} aria-label="Remove"><Trash2 size={16} /></button>}
           </div>
-          <input placeholder="Question text" value={q.text} onChange={(e) => upd(i, "text", e.target.value)} required />
+          <input placeholder="Enter your question here" value={q.text} onChange={(e) => upd(i, "text", e.target.value)} required />
           {["a", "b", "c", "d"].map((k) => (
             <label key={k} className="optrow">
-              <input type="radio" name={"c" + i} checked={q.correct_answer === k} onChange={() => upd(i, "correct_answer", k)} />
-              <input placeholder={"Option " + k.toUpperCase()} value={q["option_" + k]} onChange={(e) => upd(i, "option_" + k, e.target.value)} required />
+              <input type="radio" required name={"c" + i} checked={q.correct_answer === k} onChange={() => upd(i, "correct_answer", k)} />
+              <input placeholder={"Choice " + k.toUpperCase()} value={q["option_" + k]} onChange={(e) => upd(i, "option_" + k, e.target.value)} required />
             </label>
           ))}
           <p className="muted small">Select the circle next to the correct answer.</p>
@@ -69,5 +69,6 @@ export default function QuizEditor({ courseId, initial, onSaved }) {
     </form>
   );
 }
+
 
 

@@ -33,10 +33,12 @@ export default function Write() {
   const [error, setError] = useState("");
   const [done, setDone] = useState(false);
   const [busy, setBusy] = useState(false);
+  const [words, setWords] = useState(0);
 
   const editor = useEditor({
     extensions: [StarterKit],
-    content: "<p>Start writing your article here...</p>",
+    content: "",
+    onUpdate: ({ editor }) => setWords(editor.getText().trim().split(/\s+/).filter(Boolean).length),
   });
 
   useEffect(() => {
@@ -79,7 +81,7 @@ export default function Write() {
         <div className="card" style={{ textAlign: "center", padding: 34 }}>
           <h2>Thank you!</h2>
           <p className="muted">Your article was sent to the admin for approval. It will appear on the blog once approved.</p>
-          <button className="btn" onClick={() => { setDone(false); setForm({ ...form, title: "", excerpt: "", tags: "" }); editor.commands.setContent("<p></p>"); }}>Write another</button>
+          <button className="btn" onClick={() => { setDone(false); setWords(0); setForm({ ...form, title: "", excerpt: "", tags: "" }); }}>Write another</button>
         </div>
       </div>
     );
@@ -88,12 +90,12 @@ export default function Write() {
   return (
     <div className="container page rise">
       <h1>Write an article</h1>
-      <p className="muted">Share what you know. An admin reviews every article before it is published.</p>
+      <p className="muted sub">Share what you know. An admin reviews every article before it is published.</p>
       <form className="writeform" onSubmit={submit}>
         <label>Title</label>
-        <input value={form.title} onChange={set("title")} required />
+        <input placeholder="Give your article a clear title" value={form.title} onChange={set("title")} required />
         <label>Short summary</label>
-        <input value={form.excerpt} onChange={set("excerpt")} required />
+        <input placeholder="A short summary for readers (1 or 2 sentences)" value={form.excerpt} onChange={set("excerpt")} required />
         <div className="two">
           <div>
             <label>Category</label>
@@ -110,9 +112,11 @@ export default function Write() {
         <div className="editor">
           <Toolbar editor={editor} />
           <EditorContent editor={editor} />
+          <div className="wc">{words} {words === 1 ? "word" : "words"}</div>
         </div>
-        {error && <p className="error" style={{ marginTop: 12 }}>{error}</p>}
+        {error && <p className="error shake" style={{ marginTop: 12 }}>{error}</p>}
         <button className="btn" style={{ marginTop: 18 }} disabled={busy}>{busy ? "Sending..." : "Send for approval"}</button>
+        <p className="muted small" style={{ marginTop: 12 }}>After you send it, an admin reviews your article. It appears on the blog once it is approved.</p>
       </form>
     </div>
   );

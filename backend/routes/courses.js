@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const db = require("../db.js");
 const { authenticate, optionalAuth } = require("../middleware/auth.js");
 
@@ -66,6 +66,15 @@ router.post("/:id/enroll", authenticate, function (req, res) {
   res.status(201).json({ enrolled: true, progress: progressOf(req.user.id, course.id) });
 });
 
+// lessonShortcut: find the course from the lesson id
+function lessonCourse(req, res, next) {
+  const l = db.prepare("SELECT course_id FROM lessons WHERE id = ?").get(req.params.lessonId);
+  if (!l) return res.status(404).json({ error: "Lesson not found" });
+  req.url = "/" + l.course_id + "/lessons/" + req.params.lessonId + (req.path.endsWith("/complete") ? "/complete" : "");
+  next();
+}
+router.get("/lessons/:lessonId", authenticate, lessonCourse);
+router.post("/lessons/:lessonId/complete", authenticate, lessonCourse);
 router.get("/:id/lessons/:lessonId", authenticate, function (req, res) {
   const course = db.prepare("SELECT * FROM courses WHERE id = ?").get(req.params.id);
   if (!course) return res.status(404).json({ error: "Course not found" });
@@ -89,3 +98,4 @@ router.post("/:id/lessons/:lessonId/complete", authenticate, function (req, res)
 });
 
 module.exports = router;
+

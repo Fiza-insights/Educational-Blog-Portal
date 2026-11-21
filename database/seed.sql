@@ -19,7 +19,7 @@ INSERT INTO categories (id, name, slug) VALUES (2, 'Python and Data', 'python-an
 INSERT INTO categories (id, name, slug) VALUES (3, 'Design', 'design');
 INSERT INTO categories (id, name, slug) VALUES (4, 'Career Skills', 'career-skills');
 
--- courses (9 rows)
+-- courses (8 rows)
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (1, 'HTML and CSS Basics', 'Build your first web page from scratch. Learn tags, styling and modern layouts.', 'beginner', 1, 2, 'published', '2026-09-27 05:00:00');
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (2, 'JavaScript for Beginners', 'Learn the core ideas of JavaScript: variables, functions and how to make pages interactive.', 'beginner', 1, 2, 'published', '2026-09-28 05:00:00');
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (3, 'React Fundamentals', 'Understand components, state and effects, the three ideas behind every React app.', 'intermediate', 1, 3, 'published', '2026-09-29 05:00:00');
@@ -27,35 +27,34 @@ INSERT INTO courses (id, title, description, level, category_id, instructor_id, 
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (5, 'SQL and Databases', 'Learn how databases store data and how to read it with SELECT, WHERE and JOIN.', 'intermediate', 2, 4, 'published', '2026-10-01 05:00:00');
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (6, 'UI/UX Design Basics', 'Learn how to make websites that are clear, readable and pleasant to use on any screen.', 'beginner', 3, 4, 'published', '2026-10-02 05:00:00');
 INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (7, 'Git and GitHub', 'Track your work with Git and share it on GitHub, a must-have skill for every developer.', 'beginner', 4, 2, 'published', '2026-10-03 05:00:00');
-INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (8, 'Intro to Node.js', 'Run JavaScript on a server and build your first API with Express.', 'intermediate', 1, 3, 'pending', '2026-10-04 05:00:00');
-INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (9, 'My Test Course', 'A short course made from the API test.', 'beginner', 1, 2, 'draft', '2026-11-16 09:41:15');
+INSERT INTO courses (id, title, description, level, category_id, instructor_id, status, created_at) VALUES (8, 'Intro to Node.js', 'Run JavaScript on a server and build your first API with Express.', 'intermediate', 1, 3, 'published', '2026-10-04 05:00:00');
 
 -- lessons (23 rows)
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (1, 1, 'What is HTML?', '<p>HTML is the language that gives a web page its structure. It uses tags such as h1, p and a to mark headings, paragraphs and links.</p><p>Every page starts with a doctype and wraps its content in html, head and body tags.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (2, 1, 'Styling with CSS', '<p>CSS controls how HTML looks: colours, fonts, spacing and layout. A rule has a selector and a block of properties, like p { color: maroon; }.</p><p>You can link one stylesheet from the head so many pages share the same design.</p>', NULL, 2, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (3, 1, 'Layout with Flexbox', '<p>Flexbox lines items up in a row or a column. Set display: flex on the parent, then use justify-content and align-items to place the children.</p><p>It makes responsive layouts much easier than old float tricks.</p>', NULL, 3, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (4, 2, 'Variables and data types', '<p>Variables store values. Use const for values that do not change and let for values that do.</p><p>Common types are string, number, boolean, array and object.</p>', NULL, 1, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (5, 2, 'Functions', '<p>A function is a reusable block of code. You write it once and call it whenever you need it, with different inputs.</p><p>Arrow functions give a shorter way to write them.</p>', NULL, 2, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (6, 2, 'Working with the DOM', '<p>The DOM is the page as JavaScript sees it. You can select an element, change its text and react to clicks with event listeners.</p><p>This is how buttons and forms become interactive.</p>', NULL, 3, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (7, 3, 'Components and JSX', '<p>A React component is a function that returns JSX, which looks like HTML inside JavaScript. Components let you split a page into small reusable pieces.</p>', NULL, 1, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (8, 3, 'State with useState', '<p>State is data that can change over time. The useState hook gives you the current value and a function to update it, and React redraws the component when it changes.</p>', NULL, 2, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (9, 3, 'Effects and data fetching', '<p>useEffect runs code after the component appears or when a value changes. It is the usual place to fetch data from an API.</p>', NULL, 3, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (10, 4, 'Your first Python program', '<p>Python is known for readable code. The print function shows text on the screen, so print(''Hello'') is a complete program.</p><p>Indentation, not curly braces, groups the lines of code together.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (11, 4, 'Lists and loops', '<p>A list holds many values in order. A for loop goes through them one by one so you can work with each item.</p>', NULL, 2, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (12, 4, 'Functions in Python', '<p>Use the def keyword to define a function. It can take inputs, called parameters, and send back a result with return.</p>', NULL, 3, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (13, 5, 'Tables, rows and columns', '<p>A relational database stores data in tables. Each row is one record and each column is one kind of information, like name or email.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (14, 5, 'Reading data with SELECT', '<p>SELECT chooses columns from a table, and WHERE filters the rows. For example, SELECT name FROM users WHERE role = ''admin'' returns only admin names.</p>', NULL, 2, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (15, 5, 'Joining tables', '<p>A JOIN combines rows from two tables using a shared key, such as user_id. This lets you show a booking together with the name of the person who made it.</p>', NULL, 3, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (16, 6, 'What is good UX?', '<p>User experience is how easy and pleasant a product is to use. Good UX removes confusion, so people reach their goal in as few steps as possible.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (17, 6, 'Colour and contrast', '<p>Text must stand out from its background so everyone can read it. A contrast ratio of at least 4.5 to 1 is the common rule for normal text.</p>', NULL, 2, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (18, 6, 'Designing for mobile', '<p>Most visitors use a phone. Start with the small screen, keep tap targets large and let the layout grow for bigger screens.</p>', NULL, 3, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (19, 7, 'What is Git?', '<p>Git is a version control tool. It saves snapshots of your project called commits, so you can see history and go back if something breaks.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (20, 7, 'Commit, push and pull', '<p>git add stages your changes, git commit saves them and git push sends them to GitHub. git pull brings the latest changes down to your computer.</p>', NULL, 2, 10);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (21, 7, 'Branches and pull requests', '<p>A branch is a safe copy where you try new work. When it is ready you open a pull request so others can review it before it joins main.</p>', NULL, 3, 12);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (22, 8, 'What is Node.js?', '<p>Node.js lets you run JavaScript outside the browser, on a server. It is popular for building APIs and tools.</p>', NULL, 1, 8);
-INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (23, 8, 'Building a simple API with Express', '<p>Express is a small framework for Node.js. You define routes, such as GET /api/courses, and send back JSON.</p>', NULL, 2, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (1, 1, 'What is HTML?', 'HTML is the language that gives a web page its structure. It uses tags such as h1, p and a to mark headings, paragraphs and links. Every page starts with a doctype and wraps its content in html, head and body tags.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (2, 1, 'Styling with CSS', 'CSS controls how HTML looks: colours, fonts, spacing and layout. A rule has a selector and a block of properties, like p { color: maroon; }. You can link one stylesheet from the head so many pages share the same design.', NULL, 2, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (3, 1, 'Layout with Flexbox', 'Flexbox lines items up in a row or a column. Set display: flex on the parent, then use justify-content and align-items to place the children. It makes responsive layouts much easier than old float tricks.', NULL, 3, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (4, 2, 'Variables and data types', 'Variables store values. Use const for values that do not change and let for values that do. Common types are string, number, boolean, array and object.', NULL, 1, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (5, 2, 'Functions', 'A function is a reusable block of code. You write it once and call it whenever you need it, with different inputs. Arrow functions give a shorter way to write them.', NULL, 2, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (6, 2, 'Working with the DOM', 'The DOM is the page as JavaScript sees it. You can select an element, change its text and react to clicks with event listeners. This is how buttons and forms become interactive.', NULL, 3, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (7, 3, 'Components and JSX', 'A React component is a function that returns JSX, which looks like HTML inside JavaScript. Components let you split a page into small reusable pieces.', NULL, 1, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (8, 3, 'State with useState', 'State is data that can change over time. The useState hook gives you the current value and a function to update it, and React redraws the component when it changes.', NULL, 2, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (9, 3, 'Effects and data fetching', 'The useEffect hook runs side-effect code after a component renders or when specific values change. It is commonly used to fetch data from an API.', NULL, 3, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (10, 4, 'Your first Python program', 'Python is known for readable code. The print function shows text on the screen, so print(''Hello'') is a complete program. Indentation, not curly braces, groups the lines of code together.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (11, 4, 'Lists and loops', 'A list holds many values in order. A for loop goes through them one by one so you can work with each item.', NULL, 2, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (12, 4, 'Functions in Python', 'Use the def keyword to define a function. It can take inputs, called parameters, and send back a result with return.', NULL, 3, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (13, 5, 'Tables, rows and columns', 'A relational database stores data in tables. Each row is one record and each column is one kind of information, like name or email.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (14, 5, 'Reading data with SELECT', 'SELECT chooses columns from a table, and WHERE filters the rows. For example, SELECT name FROM users WHERE role = ''admin'' returns only admin names.', NULL, 2, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (15, 5, 'Joining tables', 'A JOIN combines rows from two tables using a shared key, such as user_id. This lets you show a booking together with the name of the person who made it.', NULL, 3, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (16, 6, 'What is good UX?', 'User experience is how easy and pleasant a product is to use. Good UX removes confusion, so people reach their goal in as few steps as possible.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (17, 6, 'Colour and contrast', 'Text must stand out from its background so everyone can read it. A contrast ratio of at least 4.5 to 1 is the common rule for normal text.', NULL, 2, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (18, 6, 'Designing for mobile', 'Most visitors use a phone. Start with the small screen, keep tap targets large and let the layout grow for bigger screens.', NULL, 3, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (19, 7, 'What is Git?', 'Git is a version control tool. It saves snapshots of your project called commits, so you can see history and go back if something breaks.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (20, 7, 'Commit, push and pull', 'Git add stages your changes, git commit saves them and git push sends them to GitHub. Git pull brings the latest changes down to your computer.', NULL, 2, 10);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (21, 7, 'Branches and pull requests', 'A branch is a safe copy where you try new work. When it is ready you open a pull request so others can review it before it joins main.', NULL, 3, 12);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (22, 8, 'What is Node.js?', 'Node.js lets you run JavaScript outside the browser, on a server. It is popular for building APIs and tools.', NULL, 1, 8);
+INSERT INTO lessons (id, course_id, title, content, video_url, position, duration_min) VALUES (23, 8, 'Building a simple API with Express', 'Express is a small framework for Node.js. You define routes, such as GET /api/courses, and send back JSON.', NULL, 2, 12);
 
--- enrollments (16 rows)
+-- enrollments (18 rows)
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (1, 5, 1, '2026-10-17 05:00:00');
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (2, 5, 2, '2026-10-18 05:00:00');
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (3, 5, 3, '2026-10-19 05:00:00');
@@ -72,8 +71,10 @@ INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (13, 9, 2, 
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (14, 9, 3, '2026-10-26 05:00:00');
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (15, 9, 4, '2026-10-27 05:00:00');
 INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (17, 1, 7, '2026-11-17 06:45:01');
+INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (18, 5, 7, '2026-11-21 06:37:46');
+INSERT INTO enrollments (id, user_id, course_id, enrolled_at) VALUES (19, 5, 4, '2026-11-21 06:40:29');
 
--- lesson_progress (22 rows)
+-- lesson_progress (28 rows)
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (1, 5, 4, '2026-10-28 05:00:00');
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (2, 5, 7, '2026-10-29 05:00:00');
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (3, 5, 8, '2026-10-30 05:00:00');
@@ -96,6 +97,12 @@ INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (19, 9
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (20, 9, 10, '2026-11-02 05:00:00');
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (21, 9, 11, '2026-11-03 05:00:00');
 INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (22, 5, 1, '2026-11-16 09:36:58');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (23, 5, 10, '2026-11-21 13:38:51');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (24, 5, 11, '2026-11-21 13:38:53');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (25, 5, 12, '2026-11-21 13:38:55');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (26, 5, 19, '2026-11-21 13:39:24');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (27, 5, 20, '2026-11-21 13:39:28');
+INSERT INTO lesson_progress (id, user_id, lesson_id, completed_at) VALUES (28, 5, 21, '2026-11-21 13:39:29');
 
 -- quizzes (8 rows)
 INSERT INTO quizzes (id, course_id, title, pass_percent) VALUES (1, 1, 'HTML and CSS Quiz', 60);
@@ -140,7 +147,7 @@ INSERT INTO questions (id, quiz_id, text, option_a, option_b, option_c, option_d
 INSERT INTO questions (id, quiz_id, text, option_a, option_b, option_c, option_d, correct, explanation) VALUES (30, 8, 'What does Express help you build?', 'Web servers and APIs', 'Spreadsheets', 'Logos', 'Videos', 'a', 'Express builds web servers and APIs.');
 INSERT INTO questions (id, quiz_id, text, option_a, option_b, option_c, option_d, correct, explanation) VALUES (31, 8, 'What format do APIs commonly send back?', 'JSON', 'PDF only', 'MP3', 'BMP', 'a', 'JSON is the common API format.');
 
--- quiz_attempts (7 rows)
+-- quiz_attempts (11 rows)
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (1, 5, 6, 2, 4, 50, 0, '2026-11-07 05:00:00');
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (2, 6, 7, 2, 4, 50, 0, '2026-11-08 05:00:00');
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (3, 7, 8, 2, 4, 50, 0, '2026-11-09 05:00:00');
@@ -148,8 +155,12 @@ INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, 
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (5, 7, 1, 1, 4, 25, 0, '2026-11-19 10:35:40');
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (6, 7, 1, 0, 4, 0, 0, '2026-11-19 10:37:35');
 INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (7, 7, 1, 0, 4, 0, 0, '2026-11-19 10:37:57');
+INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (8, 1, 5, 2, 4, 50, 0, '2026-11-19 16:34:57');
+INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (9, 1, 5, 1, 4, 25, 0, '2026-11-21 06:41:23');
+INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (10, 4, 5, 2, 4, 50, 0, '2026-11-21 13:39:08');
+INSERT INTO quiz_attempts (id, quiz_id, user_id, score, total, percent, passed, taken_at) VALUES (11, 7, 5, 1, 4, 25, 0, '2026-11-21 13:39:47');
 
--- posts (16 rows)
+-- posts (12 rows)
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (1, '5 Tips to Learn Programming Faster', '5-tips-to-learn-programming-faster', 'Small daily habits beat long weekend sessions. Here are five that work.', '<p>Learning to code is a marathon, not a sprint. The people who improve fastest are not the smartest, they are the most consistent.</p><h2>1. Code a little every day</h2><p>Thirty minutes daily beats five hours once a week, because your brain needs time to remember.</p><h2>2. Build small projects</h2><p>After every new topic, build something tiny. A to-do list teaches more than ten videos.</p><h2>3. Read other people''s code</h2><p>Open source projects show you how real developers solve problems.</p>', 2, 4, 'published', '2026-10-07 05:00:00', '2026-10-07 07:00:00');
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (2, 'Why Every Developer Should Learn Git', 'why-every-developer-should-learn-git', 'Git saves your history, protects your work and is expected in every team.', '<p>Git is the tool that lets you save versions of your project and go back when something breaks.</p><h2>It protects your work</h2><p>Every commit is a checkpoint. If a change goes wrong, you can return to the last good state.</p><h2>It is how teams work</h2><p>Companies use Git and GitHub daily, so knowing it makes you ready for a real job.</p>', 2, 4, 'published', '2026-10-10 05:00:00', '2026-10-10 07:00:00');
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (3, 'HTML vs CSS vs JavaScript: What Does Each Do?', 'html-vs-css-vs-javascript-what-does-each-do', 'The three languages of the web, explained with a house analogy.', '<p>Think of a web page as a house.</p><p><strong>HTML</strong> is the structure: walls, doors and rooms. <strong>CSS</strong> is the paint and furniture. <strong>JavaScript</strong> is the electricity that makes things move and respond.</p><p>You need all three, and they are easier to learn in that order.</p>', 2, 1, 'published', '2026-10-13 05:00:00', '2026-10-13 07:00:00');
@@ -160,14 +171,10 @@ INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, statu
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (8, 'How to Build a Portfolio That Gets Noticed', 'how-to-build-a-portfolio-that-gets-noticed', 'Three to five finished projects with clear READMEs beat twenty half-done ones.', '<p>Recruiters spend under a minute on a portfolio. Make that minute count.</p><h2>Quality over quantity</h2><p>Show a few complete projects. Each should have a live demo or screenshots, a clear README and clean code.</p><h2>Tell the story</h2><p>Explain what problem you solved and what you learned.</p>', 2, 4, 'published', '2026-10-28 05:00:00', '2026-10-28 07:00:00');
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (9, 'Mobile First: Designing for Small Screens', 'mobile-first-designing-for-small-screens', 'Start with the phone and the desktop layout becomes easy.', '<p>Most visitors browse on a phone, so design for that screen first.</p><p>Keep one column, make buttons large and keep text readable. Then add extra columns as the screen gets wider with CSS media queries.</p>', 4, 3, 'published', '2026-10-31 05:00:00', '2026-10-31 07:00:00');
 INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (10, 'Common Mistakes New Developers Make', 'common-mistakes-new-developers-make', 'Everyone makes these mistakes. Knowing them early saves weeks.', '<p>Copying code without understanding it is the biggest one. If you cannot explain a line, you do not own it yet.</p><p>Other common mistakes: skipping error messages, never committing to Git and trying to learn five languages at once.</p>', 3, 4, 'published', '2026-11-03 05:00:00', '2026-11-03 07:00:00');
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (11, 'What I Learned Building My First API', 'what-i-learned-building-my-first-api', 'Routes, JSON and error handling: my notes from the first week.', '<p>An API is a menu of URLs that other programs can call.</p><p>My biggest lesson was to return clear error messages, so the person using the API knows what went wrong.</p>', 3, 1, 'pending', '2026-11-06 05:00:00', NULL);
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (12, 'Dark Mode Done Right', 'dark-mode-done-right', 'Dark mode is not just inverted colours. Here is how to do it well.', '<p>Pure black with pure white text is harsh on the eyes. Use a very dark brown or blue and a soft off-white instead.</p><p>Keep contrast high enough to read, and test your colours in a dim room.</p>', 4, 3, 'pending', '2026-11-09 05:00:00', NULL);
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (13, 'My first post from the API', 'my-first-post-from-the-api', 'Hello world, this is a test post with enough text.', '<p>Hello world, this is a test post with enough text.</p>', 2, 1, 'published', '2026-11-16 09:43:12', '2026-11-16 09:43:12');
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (14, 'My first post from the API', 'my-first-post-from-the-api-2', 'Hello world, this is a test post with enough text.', '<p>Hello world, this is a test post with enough text.</p>', 2, 1, 'pending', '2026-11-17 06:07:59', NULL);
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (15, 'My first post from the API', 'my-first-post-from-the-api-3', 'Hello world, this is a test post with enough text.', '<p>Hello world, this is a test post with enough text.</p>', 2, 1, 'pending', '2026-11-17 06:08:39', NULL);
-INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (16, 'Safety check post', 'safety-check-post', 'This post has enough text to be valid.Second paragraph.', '<p>This post has enough text to be valid.</p><p>Second paragraph.</p>', 2, 1, 'published', '2026-11-17 06:09:09', '2026-11-17 06:09:09');
+INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (11, 'What I Learned Building My First API', 'what-i-learned-building-my-first-api', 'Routes, JSON and error handling: my notes from the first week.', '<p>An API is a menu of URLs that other programs can call.</p><p>My biggest lesson was to return clear error messages, so the person using the API knows what went wrong.</p>', 3, 1, 'published', '2026-11-06 05:00:00', '2026-11-21 13:45:25');
+INSERT INTO posts (id, title, slug, excerpt, body, author_id, category_id, status, created_at, published_at) VALUES (12, 'Dark Mode Done Right', 'dark-mode-done-right', 'Dark mode is not just inverted colours. Here is how to do it well.', '<p>Pure black with pure white text is harsh on the eyes. Use a very dark brown or blue and a soft off-white instead.</p><p>Keep contrast high enough to read, and test your colours in a dim room.</p>', 4, 3, 'published', '2026-11-09 05:00:00', '2026-11-21 13:51:15');
 
--- tags (22 rows)
+-- tags (23 rows)
 INSERT INTO tags (id, name) VALUES (1, 'learning');
 INSERT INTO tags (id, name) VALUES (2, 'beginners');
 INSERT INTO tags (id, name) VALUES (3, 'productivity');
@@ -190,8 +197,9 @@ INSERT INTO tags (id, name) VALUES (29, 'tips');
 INSERT INTO tags (id, name) VALUES (30, 'nodejs');
 INSERT INTO tags (id, name) VALUES (31, 'api');
 INSERT INTO tags (id, name) VALUES (35, 'test');
+INSERT INTO tags (id, name) VALUES (42, 'this');
 
--- post_tags (41 rows)
+-- post_tags (34 rows)
 INSERT INTO post_tags (post_id, tag_id) VALUES (1, 1);
 INSERT INTO post_tags (post_id, tag_id) VALUES (1, 2);
 INSERT INTO post_tags (post_id, tag_id) VALUES (1, 3);
@@ -226,13 +234,6 @@ INSERT INTO post_tags (post_id, tag_id) VALUES (11, 31);
 INSERT INTO post_tags (post_id, tag_id) VALUES (11, 2);
 INSERT INTO post_tags (post_id, tag_id) VALUES (12, 18);
 INSERT INTO post_tags (post_id, tag_id) VALUES (12, 8);
-INSERT INTO post_tags (post_id, tag_id) VALUES (13, 35);
-INSERT INTO post_tags (post_id, tag_id) VALUES (13, 31);
-INSERT INTO post_tags (post_id, tag_id) VALUES (14, 35);
-INSERT INTO post_tags (post_id, tag_id) VALUES (14, 31);
-INSERT INTO post_tags (post_id, tag_id) VALUES (15, 35);
-INSERT INTO post_tags (post_id, tag_id) VALUES (15, 31);
-INSERT INTO post_tags (post_id, tag_id) VALUES (16, 35);
 
 -- comments (17 rows)
 INSERT INTO comments (id, post_id, user_id, body, status, created_at) VALUES (1, 1, 5, 'Really clear explanation, thank you!', 'approved', '2026-10-12 10:00:00');
@@ -252,6 +253,9 @@ INSERT INTO comments (id, post_id, user_id, body, status, created_at) VALUES (14
 INSERT INTO comments (id, post_id, user_id, body, status, created_at) VALUES (15, 10, 5, 'I tried this and it worked on the first go.', 'approved', '2026-11-09 10:00:00');
 INSERT INTO comments (id, post_id, user_id, body, status, created_at) VALUES (16, 1, 5, 'Nice article!', 'approved', '2026-11-16 09:43:12');
 INSERT INTO comments (id, post_id, user_id, body, status, created_at) VALUES (17, 1, 5, 'Nice article!', 'approved', '2026-11-17 06:07:59');
+
+-- post_bookmarks (1 rows)
+INSERT INTO post_bookmarks (user_id, post_id, created_at) VALUES (1, 7, '2026-11-21 13:45:48');
 
 COMMIT;
 PRAGMA foreign_keys = ON;

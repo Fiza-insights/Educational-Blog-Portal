@@ -70,11 +70,11 @@ export default function InstructorCourse() {
     <div className="container page rise">
       <Link to="/instructor" className="back">Back to my courses</Link>
       <div className="row" style={{ marginTop: 14 }}>
-        <span className="badge">{course.status}</span>
+        <span className={"badge st st-" + course.status}>{course.status}</span>
         <span className="badge">{course.level}</span>
       </div>
       <h1 style={{ marginTop: 12 }}>{course.title}</h1>
-      <p className="muted">{course.description}</p>
+      <p className="muted plain">{course.description}</p>
       <div className="row" style={{ margin: "14px 0" }}>
         <button className="btn" onClick={submitForApproval}><Send size={16} /> Send for approval</button>
         <button className="btn ghost" onClick={deleteCourse}><Trash2 size={16} /> Delete course</button>
@@ -100,9 +100,9 @@ export default function InstructorCourse() {
         <form className="card" onSubmit={saveLesson}>
           <h3>{editing ? "Edit lesson" : "Add lesson"}</h3>
           <label>Title</label>
-          <input value={form.title} onChange={set("title")} required />
+          <input value={form.title} onChange={set("title")} placeholder="e.g. Introduction to Phishing" required />
           <label>Lesson text</label>
-          <textarea rows="6" value={form.content} onChange={set("content")} />
+          <textarea rows="6" value={form.content} onChange={set("content")} placeholder="Write the lesson content here..." />
           <label>Video link (optional, YouTube)</label>
           <input value={form.video_url} onChange={set("video_url")} placeholder="https://www.youtube.com/watch?v=..." />
           <label>Duration (minutes)</label>
@@ -117,4 +117,6 @@ export default function InstructorCourse() {
     </div>
   );
 }
+
+
 

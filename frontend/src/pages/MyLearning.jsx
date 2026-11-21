@@ -65,7 +65,7 @@ export default function MyLearning() {
       </div>
 
       <h2 style={{ marginTop: 40 }}><Trophy size={22} style={{ verticalAlign: -3 }} /> Quiz history</h2>
-      {attempts.length === 0 && <p className="muted">No quiz taken yet.</p>}
+      {attempts.length === 0 && <p className="muted">No quiz taken yet. <Link to="/courses">Take a course quiz</Link></p>}
       <div className="lessons" style={{ marginTop: 14 }}>
         {attempts.map((a) => (
           <Link key={a.quiz.id} to={"/quiz/" + a.quiz.id} className="lesson card hover">
@@ -77,7 +77,7 @@ export default function MyLearning() {
       </div>
 
       <h2 style={{ marginTop: 40 }}><Bookmark size={22} style={{ verticalAlign: -3 }} /> Saved articles</h2>
-      {saved.length === 0 && <p className="muted">Save an article with the Save button and it will show up here.</p>}
+      {saved.length === 0 && <p className="muted">Save an article with the Save button and it will show up here. <Link to="/blog">Read the blog</Link></p>}
       <div className="grid" style={{ marginTop: 14 }}>
         {saved.map((p) => (
           <Link key={p.id} to={"/blog/" + p.slug} className="card hover">
@@ -90,4 +90,5 @@ export default function MyLearning() {
     </div>
   );
 }
+
 

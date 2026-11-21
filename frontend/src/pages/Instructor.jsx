@@ -1,6 +1,6 @@
 ﻿import { useEffect, useState } from "react";
 import { Link, Navigate, useNavigate } from "react-router-dom";
-import { Plus } from "lucide-react";
+import { Plus, ChevronRight } from "lucide-react";
 import { api } from "../api.js";
 import { useAuth } from "../auth.jsx";
 
@@ -47,7 +47,7 @@ export default function Instructor() {
   return (
     <div className="container page rise">
       <h1>Teach on Emberly</h1>
-      <p className="muted">Create a course, add lessons and a quiz, then send it for approval.</p>
+      <p className="muted sub">Create a course, add lessons and a quiz, then send it for approval.</p>
       <div className="detail" style={{ marginTop: 26 }}>
         <div>
           <h2>My courses</h2>
@@ -56,7 +56,8 @@ export default function Instructor() {
             {courses.map((c) => (
               <Link key={c.id} to={"/instructor/" + c.id} className="lesson card hover">
                 <span className="lt">{c.title}</span>
-                <span className="badge">{c.status}</span>
+                <span className={"badge st st-" + c.status}>{c.status}</span>
+                <span className="edit">Edit <ChevronRight size={16} className="chev" /></span>
               </Link>
             ))}
           </div>
@@ -64,9 +65,9 @@ export default function Instructor() {
         <form className="card" onSubmit={create}>
           <h3><Plus size={18} style={{ verticalAlign: -3 }} /> New course</h3>
           <label>Title</label>
-          <input value={form.title} onChange={set("title")} required />
+          <input placeholder="e.g. Intro to Web Development" value={form.title} onChange={set("title")} required />
           <label>Description</label>
-          <textarea rows="4" value={form.description} onChange={set("description")} required />
+          <textarea rows="4" placeholder="What will students learn in this course?" value={form.description} onChange={set("description")} required />
           <label>Level</label>
           <select value={form.level} onChange={set("level")}>
             <option value="beginner">Beginner</option>
@@ -77,7 +78,7 @@ export default function Instructor() {
           <select value={form.category_id} onChange={set("category_id")}>
             {cats.map((c) => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
-          {error && <p className="error" style={{ marginTop: 12 }}>{error}</p>}
+          {error && <p className="error shake" style={{ marginTop: 12 }}>{error}</p>}
           <button className="btn" style={{ marginTop: 16 }} disabled={busy}>{busy ? "Creating..." : "Create course"}</button>
         </form>
       </div>

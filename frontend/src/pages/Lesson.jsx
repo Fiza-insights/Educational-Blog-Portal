@@ -53,7 +53,7 @@ export default function Lesson() {
   if (!data) return <div className="container page"><p className="muted">Loading...</p></div>;
 
   const l = data.lesson;
-  const text = l.content || l.body || l.text || "";
+  const text = String(l.content || l.body || l.text || "").replace(/<[^>]+>/g, "\n").replace(/\n+/g, "\n").trim();
   const video = l.video_url || l.video;
 
   return (
@@ -78,3 +78,4 @@ export default function Lesson() {
     </div>
   );
 }
+
