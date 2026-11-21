@@ -70,16 +70,16 @@ There are a few more students too: ali, maham, usman and zoya (all `@emberly.tes
 
 | | |
 |---|---|
-| ![Home](screenshots/home.png) | ![Courses](screenshots/courses.png) |
-| ![Course detail](screenshots/course-detail.png) | ![Lesson](screenshots/lesson.png) |
-| ![Quiz result](screenshots/quiz-result.png) | ![Blog](screenshots/blog.png) |
-| ![Write an article](screenshots/write.png) | ![Teach page](screenshots/instructor.png) |
-| ![Admin dashboard](screenshots/admin.png) | |
-
+| **Home**<br>![Home](screenshots/home.png) | **Courses**<br>![Courses](screenshots/courses.png) |
+| **Course page**<br>![Course detail](screenshots/course-detail.png) | **Lesson**<br>![Lesson](screenshots/lesson.png) |
+| **Quiz result**<br>![Quiz result](screenshots/quiz-result.png) | **Blog**<br>![Blog](screenshots/blog.png) |
+| **Write an article**<br>![Write an article](screenshots/write.png) | **Teach (instructor)**<br>![Teach page](screenshots/instructor.png) |
+| **Admin dashboard**<br>![Admin dashboard](screenshots/admin.png) | |
 ## Credits
 
 - Icons are from [Lucide](https://lucide.dev).
 - Fonts are Fraunces and Plus Jakarta Sans from Google Fonts.
 - I did not use any stock photos. The course images are CSS gradients with icons.
 - All the courses and articles are demo content that I wrote for this project.
+
 
