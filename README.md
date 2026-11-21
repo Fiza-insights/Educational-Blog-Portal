@@ -41,6 +41,7 @@ node seed.js
 node seed-courses-1.js
 node seed-courses-2.js
 node seed-posts.js
+node fix-lessons.js
 node server.js
 ```
 
@@ -81,5 +82,6 @@ There are a few more students too: ali, maham, usman and zoya (all `@emberly.tes
 - Fonts are Fraunces and Plus Jakarta Sans from Google Fonts.
 - I did not use any stock photos. The course images are CSS gradients with icons.
 - All the courses and articles are demo content that I wrote for this project.
+
 
 
